@@ -1,4 +1,4 @@
-package com.testmeli.MVP.modelo;
+package com.testmeli.MVP.modelo.Clases;
 
 public class Direccion {
 

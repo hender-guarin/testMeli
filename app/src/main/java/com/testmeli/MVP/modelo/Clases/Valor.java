@@ -1,4 +1,4 @@
-package com.testmeli.MVP.modelo;
+package com.testmeli.MVP.modelo.Clases;
 
 public class Valor {
 
@@ -40,5 +40,13 @@ public class Valor {
 
     public void setStruct(String struct) {
         this.struct = struct;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 }
