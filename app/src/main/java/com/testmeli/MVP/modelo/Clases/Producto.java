@@ -6,13 +6,17 @@ public class Producto {
 
     private String titulo;
     private String precio;
-    private int cantidadesDisponibles;
-    private int cantidadesVendidas;
+    private String cantidadesDisponibles;
+    private String cantidadesVendidas;
     private String urlImagen;
     private Direccion direccion;
     private List<Atributo> atributos;
 
-    public Producto(String titulo, String precio, int cantidadesDisponibles, int cantidadesVendidas, String urlImagen, Direccion direccion, List<Atributo> atributos) {
+
+    public Producto() {
+    }
+
+    public Producto(String titulo, String precio, String cantidadesDisponibles, String cantidadesVendidas, String urlImagen, Direccion direccion, List<Atributo> atributos) {
         this.titulo = titulo;
         this.precio = precio;
         this.cantidadesDisponibles = cantidadesDisponibles;
@@ -20,9 +24,6 @@ public class Producto {
         this.urlImagen = urlImagen;
         this.direccion = direccion;
         this.atributos = atributos;
-    }
-
-    public Producto() {
     }
 
     public String getTitulo() {
@@ -41,21 +42,6 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getCantidadesDisponibles() {
-        return cantidadesDisponibles;
-    }
-
-    public void setCantidadesDisponibles(int cantidadesDisponibles) {
-        this.cantidadesDisponibles = cantidadesDisponibles;
-    }
-
-    public int getCantidadesVendidas() {
-        return cantidadesVendidas;
-    }
-
-    public void setCantidadesVendidas(int cantidadesVendidas) {
-        this.cantidadesVendidas = cantidadesVendidas;
-    }
 
     public String getUrlImagen() {
         return urlImagen;
@@ -79,5 +65,21 @@ public class Producto {
 
     public void setAtributos(List<Atributo> atributos) {
         this.atributos = atributos;
+    }
+
+    public String getCantidadesDisponibles() {
+        return cantidadesDisponibles;
+    }
+
+    public void setCantidadesDisponibles(String cantidadesDisponibles) {
+        this.cantidadesDisponibles = cantidadesDisponibles;
+    }
+
+    public String getCantidadesVendidas() {
+        return cantidadesVendidas;
+    }
+
+    public void setCantidadesVendidas(String cantidadesVendidas) {
+        this.cantidadesVendidas = cantidadesVendidas;
     }
 }

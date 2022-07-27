@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RepositoryProducto extends RepositoryGeneral {
 
-    void getProductos();
+    void getProductos(String info);
 
     void setProductos(List<Producto> productos);
 
