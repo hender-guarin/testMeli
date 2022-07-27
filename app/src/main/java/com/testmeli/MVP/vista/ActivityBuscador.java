@@ -12,6 +12,7 @@ import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.MVP.presentador.PresentadorProducto;
 import com.testmeli.MVP.presentador.PresentadorProductoImpl;
 import com.testmeli.R;
+import com.testmeli.util.Util;
 
 import java.util.List;
 
@@ -30,10 +31,15 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         presentadorProducto= new PresentadorProductoImpl(this,getApplicationContext());
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-
-        getProductos("aaaaaaaa");
+        getProductos("wc");
     }
 
+
+    @Override
+    public void showAlertDialogInf(int titulo, int mensaje) {
+        cancelDialogCargando();
+        Toast.makeText(getApplicationContext(), getString(titulo) + " : " + getString(mensaje), Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void showAlertDialogInf(int titulo, String mensaje) {
@@ -57,13 +63,15 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
     }
 
     @Override
-    public void mostrarProductos(List<Producto> userList) {
+    public void mostrarProductos(List<Producto> productos) {
+
+        presentadorProducto.mostrarProductos(productos);
 
     }
 
     @Override
     public void getProductos(String info) {
-        showDialogCargando(R.string.informacion, R.string.consultando_productos);
-        presentadorProducto.getProductos(info);
+       showDialogCargando(R.string.informacion, R.string.consultando_productos);
+       presentadorProducto.getProductos(info);
     }
 }
