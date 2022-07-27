@@ -28,6 +28,8 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presentadorProducto= new PresentadorProductoImpl(this,getApplicationContext());
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         getProductos("aaaaaaaa");
     }
@@ -61,6 +63,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
 
     @Override
     public void getProductos(String info) {
+        showDialogCargando(R.string.informacion, R.string.consultando_productos);
         presentadorProducto.getProductos(info);
     }
 }
