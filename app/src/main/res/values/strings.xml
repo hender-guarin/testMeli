@@ -3,4 +3,12 @@
     <string name="buscar_productos">Buscar productos</string>
     <string name="Error">Error</string>
     <string name="sin_internet">Sin conexión a internet</string>
+    <string name="list_is_empty">List is empty</string>
+    <string name="informacion">Información</string>
+    <string name="verifique_conexion">Verifique su conexión a internet</string>
+    <string name="sin_información">Sin información</string>
+    <string name="consultando_usuarios">Consultando usuarios</string>
+    <string name="error_usuario">Error al importar usuario </string>
+    <string name="consultando_posts">Consultando publicaciones</string>
+    <string name="error_servidor">Error en el servidor</string>
 </resources>
