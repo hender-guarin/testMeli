@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 
 import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.MVP.presentador.PresentadorProducto;
+import com.testmeli.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
     public void getProductos() {
 
         if (!verificarConexion()) {
-
+            presentadorProducto.showErrorMessageDialog(R.string.Error,"Sin conexión a internet");
         }
 
     }
