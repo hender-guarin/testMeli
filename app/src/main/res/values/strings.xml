@@ -11,4 +11,10 @@
     <string name="error_usuario">Error al importar usuario </string>
     <string name="consultando_posts">Consultando publicaciones</string>
     <string name="error_servidor">Error en el servidor</string>
+    <string name="Nombre">Nombre</string>
+    <string name="precio">Precio</string>
+    <string name="vacio" />
+    <string name="ver_mas">Ver mas</string>
+    <string name="ver_menos">Ver menos</string>
+    <string name="unidades_disponibles">Unidades disponibles</string>
 </resources>

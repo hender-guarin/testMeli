@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        android:layout_margin="20dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity= "center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="5dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="@string/Nombre"
+                android:gravity="center_horizontal"
+                android:textColor="@color/azul_oscuro"
+              />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:weightSum="8"
+                android:padding="5dp"
+                android:background="@drawable/borde_cuadrado"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6.5"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:weightSum="12"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_weight="6"
+                            android:text="@string/precio"
+                            android:textColor="@color/gris_letra"
+                            android:textStyle="bold"
+                            tools:ignore="NestedWeights" />
+
+                        <TextView
+                            android:id="@+id/tv_unidades_disp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_weight="6"
+                            android:text="@string/vacio"
+                            android:textColor="@color/gris_letra"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:weightSum="12"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_weight="6"
+                            android:text="@string/unidades_disponibles"
+                            android:textColor="@color/gris_letra"
+                            android:textStyle="bold"
+                            tools:ignore="NestedWeights" />
+
+                        <TextView
+                            android:id="@+id/tv_precio"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:layout_weight="6"
+                            android:text="@string/vacio"
+                            android:textColor="@color/gris_letra"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+
+
+                <ImageView
+                    android:id="@+id/img_producto"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1.5"
+                    android:layout_gravity="center"
+                    android:contentDescription=" "
+                    tools:ignore="HardcodedText" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_ver_mas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/ver_mas"
+                    android:textColor="@color/gris_letra"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/img_ver_mas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_ver_ocultar"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ly_mas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:visibility="gone"
+                android:background="@drawable/borde_cuadrado"
+                >
+                <TextView
+                    android:id="@+id/tv_unidades_vendidas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/gris_letra"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/tv_atributos"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/gris_letra"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_ciudad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="@color/gris_letra"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="UseCompoundDrawables">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ver_menos"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/gris_letra"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_ver_menos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_ver_ocultar"
+                        android:rotation="180"
+                        tools:ignore="ContentDescription" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
