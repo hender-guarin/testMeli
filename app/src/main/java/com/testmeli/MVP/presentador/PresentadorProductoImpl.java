@@ -6,32 +6,37 @@ import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.MVP.modelo.Repository.RepositoryProductoWeb;
 import com.testmeli.MVP.vista.VistaProducto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PresentadorProductoImpl implements PresentadorProducto {
 
     VistaProducto vistaProducto;
     RepositoryProductoWeb repositoryProductoWeb;
+    List<Producto> productos2;
 
     public PresentadorProductoImpl(VistaProducto vistaProducto, Context context) {
         this.vistaProducto = vistaProducto;
         repositoryProductoWeb = new RepositoryProductoWeb(context,this);
+        productos2= new ArrayList<>();
     }
 
 
-    @Override
-    public void mostrarProductos(List<Producto> productos) {
-        cancelarDialogoCargando();
-        System.out.println("Productos obtenidos "+ productos.size());
 
-    }
+
 
     @Override
     public void getProductos(String data) {
+
         repositoryProductoWeb.getProductos(data);
 
     }
 
+
+    @Override
+    public void mostrarProducto(List<Producto> productos) {
+        vistaProducto.mostrarProductos(productos);
+    }
 
 
     @Override

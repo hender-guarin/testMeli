@@ -1,5 +1,6 @@
 package com.testmeli.MVP.vista.adaptadores;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +25,16 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     }
 
+    public ProductoAdapter(List<Producto> productos) {
+        this.productos = productos;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ProductoHolder holder, int position) {
 
         Producto producto= productos.get(position);
         StringBuilder data= new StringBuilder();
+        StringBuilder data2= new StringBuilder();
         String ubicacionProducto="";
 
         if(producto.getTitulo()!=null && !producto.getTitulo().isEmpty()){
@@ -57,18 +63,22 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
                 }
 
                 if(atributos.get(i).getValor()!=null && !atributos.get(i).getValor().isEmpty()){
-                    data.append(": ").append(atributos.get(i).getValor());
+                    data2.append(atributos.get(i).getValor());
                 }
 
-                data.append("\n");
+                if(i!=(atributos.size()-1)){
+                    data.append("\n");
+                    data2.append("\n");
+                }
 
             }
 
-            holder.tvAtributos.setText(data.toString());
+            holder.tvAtributo1.setText(data.toString());
+            holder.tvAtributo2.setText(data2.toString());
+
         }
 
         if(producto.getDireccion()!=null){
-            ubicacionProducto+="Ubicación: ";
 
             if(producto.getDireccion().getCity_name()!=null && producto.getDireccion().getCity_name()!=null){
                 ubicacionProducto+=producto.getDireccion().getCity_name()+ ", ";
@@ -112,7 +122,8 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         private final ImageView imgVerMas;
         private final LinearLayout ly_mas;
         private final TextView tvUnidadesVendidas;
-        private final TextView tvAtributos;
+        private final TextView tvAtributo1;
+        private final TextView tvAtributo2;
         private final TextView tvCiudad;
         private final ImageView imgVerMenos;
 
@@ -126,8 +137,9 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             imgVerMas=itemView.findViewById(R.id.img_ver_mas);
             ly_mas= itemView.findViewById(R.id.ly_mas);
             tvUnidadesVendidas=itemView.findViewById(R.id.tv_unidades_vendidas);
-            tvAtributos=itemView.findViewById(R.id.tv_atributos);
-            tvCiudad=itemView.findViewById(R.id.tv_ciudad);
+            tvAtributo1=itemView.findViewById(R.id.tv_atributo1);
+            tvAtributo2=itemView.findViewById(R.id.tv_atributo2);
+            tvCiudad=itemView.findViewById(R.id.tv_ubicacion);
             imgVerMenos= itemView.findViewById(R.id.img_ver_menos);
 
         }

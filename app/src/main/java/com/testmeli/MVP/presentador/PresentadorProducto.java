@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PresentadorProducto extends PresentadorGeneral {
 
-    void mostrarProductos(List <Producto> productos);
+     void getProductos(String data);
+    void mostrarProducto(List <Producto> productos);
 
-    void getProductos(String data);
 }

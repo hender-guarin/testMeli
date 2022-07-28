@@ -1,16 +1,20 @@
 package com.testmeli.MVP.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.MVP.presentador.PresentadorProducto;
 import com.testmeli.MVP.presentador.PresentadorProductoImpl;
+import com.testmeli.MVP.vista.adaptadores.ProductoAdapter;
 import com.testmeli.R;
 import com.testmeli.util.Util;
 
@@ -20,7 +24,6 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
 
     private PresentadorProducto presentadorProducto;
     private RecyclerView recyclerView;
-    private View view;
     private ProgressDialog progressDialog;
 
 
@@ -36,6 +39,28 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         presentadorProducto= new PresentadorProductoImpl(this,getApplicationContext());
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
+        EditText ed_info= findViewById(R.id.ed_informacion);
+        ImageView imgBuscar= findViewById(R.id.btn_buscar);
+        recyclerView= findViewById(R.id.rv_result);
+        
+        ed_info.clearFocus();
+
+        Util.ocultarTeclado(getApplicationContext(),ed_info);
+
+        imgBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Util.ocultarTeclado(getApplicationContext(),ed_info);
+                String info= ed_info.getText().toString();
+
+                if(info.isEmpty()){
+                    showAlertDialogInf(R.string.informacion,"Ingrese la palabra a buscar");
+                    recyclerView.setAdapter(null);
+                }else {
+                       getProductos(info);
+                }
+            }
+        });
 
     }
 
@@ -53,7 +78,6 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
 
     @Override
     public void showDialogCargando(int titulo, int mensaje) {
-        cancelDialogCargando();
         progressDialog.setTitle(getString(titulo));
         progressDialog.setMessage(getString(mensaje));
         progressDialog.show();
@@ -66,15 +90,26 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
 
     }
 
+
     @Override
     public void mostrarProductos(List<Producto> productos) {
-        presentadorProducto.mostrarProductos(productos);
+        cancelDialogCargando();
+        if(productos==null || productos.size()==0){
+            showAlertDialogInf(R.string.Error,R.string.sin_reultados);
+            recyclerView.setAdapter(null);
+        }else {
+
+            ProductoAdapter productoAdapter = new ProductoAdapter(productos);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            recyclerView.setAdapter(productoAdapter);
+            recyclerView.setHasFixedSize(true);
+        }
 
     }
 
     @Override
     public void getProductos(String info) {
-       showDialogCargando(R.string.informacion, R.string.consultando_productos);
+        showDialogCargando(R.string.informacion, R.string.consultando_productos);
        presentadorProducto.getProductos(info);
     }
 

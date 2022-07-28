@@ -6,7 +6,7 @@
         />
     <stroke android:color="@color/azul_oscuro" />
 
-    <solid android:color="@color/white"   />
+    <solid android:color="@color/amarillo_fondo"   />
 
-    <corners android:radius="0dp" />
+    <corners android:radius="10dp" />
 </shape>
