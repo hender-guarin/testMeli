@@ -78,17 +78,13 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
                     productos.add(producto);
                 }
 
-                presentadorProducto.mostrarProductos(productos);
 
-
-
-            } catch (Exception e) {
+           } catch (Exception e) {
 
                e.printStackTrace();
             }
 
-
-
+            presentadorProducto.mostrarProducto(productos);
 
 
         }, error -> {
