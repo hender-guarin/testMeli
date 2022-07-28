@@ -1,4 +1,5 @@
 package com.testmeli.MVP.vista.adaptadores;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.testmeli.MVP.modelo.Clases.Atributo;
 import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.R;
@@ -15,6 +21,7 @@ import java.util.List;
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ProductoHolder> {
 
     List<Producto> productos;
+    Context context;
 
     @NonNull
     @Override
@@ -23,8 +30,9 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     }
 
-    public ProductoAdapter(List<Producto> productos) {
+    public ProductoAdapter(List<Producto> productos,Context ctx) {
         this.productos = productos;
+        this.context=ctx;
     }
 
     @Override
@@ -34,7 +42,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         String ubicacionProducto="";
         StringBuilder attrib= new StringBuilder();
 
-        String aux="";
+        StringBuilder aux= new StringBuilder();
 
         if(producto.getTitulo()!=null && !producto.getTitulo().isEmpty()){
             holder.tvNombre.setText(producto.getTitulo());
@@ -59,23 +67,19 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             for(int i=0;i<atributos.size();i++){
 
                 if(atributos.get(i).getNombre()!=null && !atributos.get(i).getNombre().isEmpty()){
-                    aux+=atributos.get(i).getNombre();
+                    aux.append(atributos.get(i).getNombre());
                 }
 
                 if(atributos.get(i).getValor()!=null && !atributos.get(i).getValor().isEmpty()){
-                   aux+=":  "+ atributos.get(i).getValor();
+                   aux.append(":  ").append(atributos.get(i).getValor());
                 }
-
 
                 if(i!=(atributos.size()-1)){
-                    aux+="\n";
-
+                    aux.append("\n");
                 }
 
-                System.out.println("valor de aux--> "+ aux);
-
                 attrib.append(aux);
-                aux="";
+                aux = new StringBuilder();
             }
 
             holder.tvAtributo.setText(attrib.toString());
@@ -107,6 +111,21 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
            holder.ly_mas.setVisibility(View.VISIBLE);
        });
 
+       if(producto.getUrlImagen()!=null && !producto.getUrlImagen().isEmpty()){
+        RequestOptions options = new RequestOptions()
+        .centerCrop()
+        .placeholder(R.drawable.img_no_disponible)
+        .error(R.drawable.img_no_disponible)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .priority(Priority.HIGH);
+
+        Glide.with(context)
+        .load(producto.getUrlImagen())
+        .apply(options)
+        .into(holder.imgProducto);
+
+       }
+
 
 
     }
@@ -117,7 +136,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
     }
 
 
-    public class ProductoHolder extends RecyclerView.ViewHolder {
+    public static class ProductoHolder extends RecyclerView.ViewHolder {
 
         private final TextView tvNombre;
         private final TextView tvPrecio;
@@ -129,6 +148,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         private final TextView tvAtributo;
         private final TextView tvCiudad;
         private final ImageView imgVerMenos;
+        private final ImageView imgProducto;
 
 
         public ProductoHolder(View itemView) {
@@ -143,6 +163,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             tvAtributo=itemView.findViewById(R.id.tv_atributo);
             tvCiudad=itemView.findViewById(R.id.tv_ubicacion);
             imgVerMenos= itemView.findViewById(R.id.img_ver_menos);
+            imgProducto= itemView.findViewById(R.id.img_producto);
 
         }
 

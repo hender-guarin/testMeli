@@ -1,6 +1,7 @@
 package com.testmeli.MVP.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -97,8 +98,8 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
             recyclerView.setAdapter(null);
         }else {
 
-            ProductoAdapter productoAdapter = new ProductoAdapter(productos);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+            ProductoAdapter productoAdapter = new ProductoAdapter(productos,getApplicationContext());
+            recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
             recyclerView.setAdapter(productoAdapter);
             recyclerView.setHasFixedSize(true);
         }
@@ -108,7 +109,8 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
     @Override
     public void getProductos(String info) {
         showDialogCargando(R.string.informacion, R.string.consultando_productos);
-       presentadorProducto.getProductos(info);
+        String data= info.replace(" ","%20");
+       presentadorProducto.getProductos(data);
     }
 
    }
