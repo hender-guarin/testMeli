@@ -73,23 +73,30 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:layout_weight="8"
+                            android:layout_weight="7"
                             android:text="@string/precio"
                             android:textColor="@color/gris_letra"
                             android:textStyle="bold"
                             tools:ignore="NestedWeights" />
+
+
 
                         <TextView
                             android:id="@+id/tv_precio"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:layout_weight="4"
+                            android:layout_weight="5"
                             android:text="@string/vacio"
                             android:textColor="@color/gris_letra"
                             />
 
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:background="@color/azul_oscuro"
+                        android:layout_height="1dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -104,7 +111,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:layout_weight="8"
+                            android:layout_weight="7"
                             android:text="@string/unidades_disponibles"
                             android:textColor="@color/gris_letra"
                             android:textStyle="bold"
@@ -116,20 +123,19 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:layout_weight="4"
+                            android:layout_weight="5"
                             android:text="@string/vacio"
                             android:textColor="@color/gris_letra"
                             />
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:background="@color/azul_oscuro"
+                        android:layout_height="1dp"/>
+
                 </LinearLayout>
-
-
-
-
-
-
 
             </LinearLayout>
 
@@ -162,6 +168,8 @@
 
 
 
+
+
             <LinearLayout
                 android:id="@+id/ly_mas"
                 android:layout_width="match_parent"
@@ -184,7 +192,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:layout_weight="8"
+                        android:layout_weight="7"
                         android:text="@string/unidades_vendidas"
                         android:textColor="@color/gris_letra"
                         android:textStyle="bold"
@@ -195,45 +203,53 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:layout_weight="4"
+                        android:layout_weight="5"
                         android:text="@string/vacio"
                         android:textColor="@color/gris_letra"
                         />
 
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/azul_oscuro"
+                    android:layout_height="1dp"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_gravity="center"
-                    android:weightSum="12"
+                    android:layout_marginTop="5dp"
                     >
 
                     <TextView
-                        android:id="@+id/tv_atributo1"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:layout_weight="8"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/unidades_vendidas"
+                        android:layout_weight="7"
+                        android:text="@string/caracteristicas"
                         android:textColor="@color/gris_letra"
                         android:textStyle="bold"
                         tools:ignore="NestedWeights" />
 
                     <TextView
-                        android:id="@+id/tv_atributo2"
-                        android:layout_width="0dp"
+                        android:id="@+id/tv_atributo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:layout_weight="4"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="5"
                         android:text="@string/vacio"
                         android:textColor="@color/gris_letra"
-                        />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/azul_oscuro"
+                    android:layout_height="1dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -241,6 +257,7 @@
                     android:orientation="horizontal"
                     android:layout_gravity="center"
                     android:weightSum="12"
+                    android:layout_marginTop="5dp"
                     >
 
                     <TextView
@@ -248,11 +265,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:layout_weight="8"
+                        android:layout_weight="7"
                         android:text="@string/ubicaci_n"
                         android:textColor="@color/gris_letra"
                         android:textStyle="bold"
-                        android:layout_marginTop="5dp"
                         tools:ignore="NestedWeights" />
 
                     <TextView
@@ -260,12 +276,17 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
-                        android:layout_weight="4"
+                        android:layout_weight="5"
                         android:text="@string/vacio"
                         android:textColor="@color/gris_letra"
                         />
 
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:background="@color/azul_oscuro"
+                    android:layout_height="1dp"/>
 
 
                 <LinearLayout

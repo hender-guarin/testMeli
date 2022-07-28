@@ -42,8 +42,6 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         EditText ed_info= findViewById(R.id.ed_informacion);
         ImageView imgBuscar= findViewById(R.id.btn_buscar);
         recyclerView= findViewById(R.id.rv_result);
-        
-        ed_info.clearFocus();
 
         Util.ocultarTeclado(getApplicationContext(),ed_info);
 
