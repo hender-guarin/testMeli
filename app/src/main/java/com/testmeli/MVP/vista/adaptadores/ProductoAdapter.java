@@ -51,7 +51,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         if(producto.getPrecio()!=null && !producto.getPrecio().isEmpty()){
 
             String [] precioTotal= producto.getPrecio().split("\\.");
-            String resultado="";
+            String resultado;
             if(precioTotal.length==2){
                 String entero= precioTotal[0];
                 String decimal= precioTotal[1];
@@ -76,12 +76,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         }
 
 
-       holder.cardDetalle.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               productoSel.getProducto(producto);
-           }
-       });
+       holder.cardDetalle.setOnClickListener(view -> productoSel.getProducto(producto));
 
        if(producto.getUrlImagen()!=null && !producto.getUrlImagen().isEmpty()){
         RequestOptions options = new RequestOptions()

@@ -3,9 +3,7 @@ package com.testmeli.MVP.modelo.Repository;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -18,8 +16,10 @@ import com.testmeli.MVP.modelo.Clases.Direccion;
 import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.MVP.presentador.PresentadorProducto;
 import com.testmeli.R;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,18 +92,13 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
             presentadorProducto.showErrorMessageDialog(R.string.informacion, R.string.error_servidor);
         }) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders() {
                 return new HashMap<>();
             }
         };
         queue.add(jsonObjectRequest);
 
 
-
-    }
-
-    @Override
-    public void setProductos(List<Producto> productos) {
 
     }
 

@@ -68,7 +68,7 @@ public class DetalleProducto extends AppCompatActivity {
 
             if(producto.getPrecio()!=null && !producto.getPrecio().isEmpty()){
               String [] precioTotal= producto.getPrecio().split("\\.");
-                String resultado="";
+                String resultado;
               if(precioTotal.length==2){
                   String entero= precioTotal[0];
                   String decimal= precioTotal[1];

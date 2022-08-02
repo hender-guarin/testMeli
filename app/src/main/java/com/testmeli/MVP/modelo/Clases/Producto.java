@@ -5,17 +5,14 @@ import java.util.List;
 
 public class Producto  implements Serializable {
 
-    private String titulo;
-    private String precio;
-    private String unidadesDisponible;
-    private String unidadesVendida;
-    private String urlImagen;
-    private Direccion direccion;
-    private List<Atributo> atributos;
+    private final String titulo;
+    private final String precio;
+    private final String unidadesDisponible;
+    private final String unidadesVendida;
+    private final String urlImagen;
+    private final Direccion direccion;
+    private final List<Atributo> atributos;
 
-
-    public Producto() {
-    }
 
     public Producto(String titulo, String precio, String cantidadesDisponibles, String cantidadesVendidas, String urlImagen, Direccion direccion, List<Atributo> atributos) {
         this.titulo = titulo;
@@ -31,16 +28,8 @@ public class Producto  implements Serializable {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getPrecio() {
         return precio;
-    }
-
-    public void setPrecio(String precio) {
-        this.precio = precio;
     }
 
 
@@ -48,39 +37,20 @@ public class Producto  implements Serializable {
         return urlImagen;
     }
 
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
-    }
-
     public Direccion getDireccion() {
         return direccion;
-    }
-
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
     }
 
     public List<Atributo> getAtributos() {
         return atributos;
     }
 
-    public void setAtributos(List<Atributo> atributos) {
-        this.atributos = atributos;
-    }
-
     public String getUnidadesDisponible() {
         return unidadesDisponible;
-    }
-
-    public void setUnidadesDisponible(String unidadesDisponible) {
-        this.unidadesDisponible = unidadesDisponible;
     }
 
     public String getUnidadesVendida() {
         return unidadesVendida;
     }
 
-    public void setUnidadesVendida(String unidadesVendida) {
-        this.unidadesVendida = unidadesVendida;
-    }
 }
