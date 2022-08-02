@@ -1,14 +1,12 @@
 package com.testmeli.MVP.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -47,18 +45,15 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
 
         Util.ocultarTeclado(getApplicationContext(),ed_info);
 
-        imgBuscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Util.ocultarTeclado(getApplicationContext(),ed_info);
-                String info= ed_info.getText().toString();
+        imgBuscar.setOnClickListener(view -> {
+            Util.ocultarTeclado(getApplicationContext(),ed_info);
+            String info= ed_info.getText().toString();
 
-                if(info.isEmpty()){
-                    showAlertDialogInf(R.string.informacion,"Ingrese la palabra a buscar");
-                    recyclerView.setAdapter(null);
-                }else {
-                       getProductos(info);
-                }
+            if(info.isEmpty()){
+                showAlertDialogInf(R.string.informacion,"Ingrese la palabra a buscar");
+                recyclerView.setAdapter(null);
+            }else {
+                   getProductos(info);
             }
         });
 
@@ -100,7 +95,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         }else {
 
             ProductoAdapter productoAdapter = new ProductoAdapter(productos,getApplicationContext(),interfaceProducto());
-            recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             recyclerView.setAdapter(productoAdapter);
             recyclerView.setHasFixedSize(true);
         }
@@ -110,7 +105,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
     @Override
     public void getProductos(String info) {
         showDialogCargando(R.string.informacion, R.string.consultando_productos);
-        String data= info.replace(" ","%20");
+        String data= remplazarCaracteresEspeciales(info);
        presentadorProducto.getProductos(data);
     }
 
@@ -120,6 +115,31 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
             intent.putExtra("producto", producto);
             startActivity(intent);
         };
+    }
+
+    public String remplazarCaracteresEspeciales(String info){
+
+        String rta=info;
+        rta=rta.replace(" ","%20");
+        rta=rta.replace("?","%20");
+        rta=rta.replace("¿","%20");
+        rta=rta.replace("¡","%20");
+        rta=rta.replace("!","%20");
+        rta=rta.replace("ñ","n");
+        rta=rta.replace("Ñ","N");
+        rta=rta.replace("Á","A");
+        rta=rta.replace("É","E");
+        rta=rta.replace("Í","I");
+        rta=rta.replace("Ó","O");
+        rta=rta.replace("Ú","U");
+        rta=rta.replace("á","a");
+        rta=rta.replace("é","e");
+        rta=rta.replace("í","i");
+        rta=rta.replace("ó","o");
+        rta=rta.replace("ú","u");
+
+        return rta;
+
     }
 
    }

@@ -7,8 +7,8 @@ public class Producto  implements Serializable {
 
     private String titulo;
     private String precio;
-    private String cantidadesDisponibles;
-    private String cantidadesVendidas;
+    private String unidadesDisponible;
+    private String unidadesVendida;
     private String urlImagen;
     private Direccion direccion;
     private List<Atributo> atributos;
@@ -20,8 +20,8 @@ public class Producto  implements Serializable {
     public Producto(String titulo, String precio, String cantidadesDisponibles, String cantidadesVendidas, String urlImagen, Direccion direccion, List<Atributo> atributos) {
         this.titulo = titulo;
         this.precio = precio;
-        this.cantidadesDisponibles = cantidadesDisponibles;
-        this.cantidadesVendidas = cantidadesVendidas;
+        this.unidadesDisponible = cantidadesDisponibles;
+        this.unidadesVendida = cantidadesVendidas;
         this.urlImagen = urlImagen;
         this.direccion = direccion;
         this.atributos = atributos;
@@ -68,19 +68,19 @@ public class Producto  implements Serializable {
         this.atributos = atributos;
     }
 
-    public String getCantidadesDisponibles() {
-        return cantidadesDisponibles;
+    public String getUnidadesDisponible() {
+        return unidadesDisponible;
     }
 
-    public void setCantidadesDisponibles(String cantidadesDisponibles) {
-        this.cantidadesDisponibles = cantidadesDisponibles;
+    public void setUnidadesDisponible(String unidadesDisponible) {
+        this.unidadesDisponible = unidadesDisponible;
     }
 
-    public String getCantidadesVendidas() {
-        return cantidadesVendidas;
+    public String getUnidadesVendida() {
+        return unidadesVendida;
     }
 
-    public void setCantidadesVendidas(String cantidadesVendidas) {
-        this.cantidadesVendidas = cantidadesVendidas;
+    public void setUnidadesVendida(String unidadesVendida) {
+        this.unidadesVendida = unidadesVendida;
     }
 }
