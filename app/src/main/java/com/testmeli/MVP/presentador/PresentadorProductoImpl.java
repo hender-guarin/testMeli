@@ -22,16 +22,10 @@ public class PresentadorProductoImpl implements PresentadorProducto {
     }
 
 
-
-
-
     @Override
     public void getProductos(String data) {
-
         repositoryProductoWeb.getProductos(data);
-
     }
-
 
     @Override
     public void mostrarProducto(List<Producto> productos) {
@@ -47,7 +41,6 @@ public class PresentadorProductoImpl implements PresentadorProducto {
     @Override
     public void showErrorMessageDialog(int titulo, String mensaje) {
         vistaProducto.showAlertDialogInf(titulo,mensaje);
-
     }
 
     @Override

@@ -30,7 +30,8 @@
                 android:background="@color/white"
                 android:textSize="16sp"
                 android:hint="@string/buscar_productos"
-                android:inputType="text" />
+                android:inputType="text"
+                android:autofillHints="" />
 
             <TextView
                 android:layout_width="0dp"

@@ -1,15 +1,11 @@
 package com.testmeli.MVP.modelo.Clases;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Atributo  implements Serializable {
 
-     private String nombre;
-     private String valor;
-
-     public Atributo() {
-     }
+     private final String nombre;
+     private final String valor;
 
      public Atributo(String nombre, String valor) {
           this.nombre = nombre;
@@ -20,15 +16,8 @@ public class Atributo  implements Serializable {
           return nombre;
      }
 
-     public void setNombre(String nombre) {
-          this.nombre = nombre;
-     }
-
      public String getValor() {
           return valor;
      }
 
-     public void setValor(String valor) {
-          this.valor = valor;
-     }
 }
