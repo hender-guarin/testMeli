@@ -88,7 +88,7 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
 
 
         }, error -> {
-            Log.d("Error", error.toString());
+            presentadorProducto.cancelarDialogoCargando();
             presentadorProducto.showErrorMessageDialog(R.string.informacion, R.string.error_servidor);
         }) {
             @Override

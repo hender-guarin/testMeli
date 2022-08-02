@@ -41,7 +41,7 @@ public class PresentadorProductoImpl implements PresentadorProducto {
 
     @Override
     public void showErrorMessageDialog(int titulo, int mensaje) {
-
+        vistaProducto.showAlertDialogInf(titulo,mensaje);
     }
 
     @Override

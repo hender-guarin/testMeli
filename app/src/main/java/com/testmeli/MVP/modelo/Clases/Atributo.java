@@ -1,8 +1,9 @@
 package com.testmeli.MVP.modelo.Clases;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Atributo {
+public class Atributo  implements Serializable {
 
      private String nombre;
      private String valor;

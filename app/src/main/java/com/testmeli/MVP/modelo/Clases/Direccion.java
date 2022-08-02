@@ -1,6 +1,8 @@
 package com.testmeli.MVP.modelo.Clases;
 
-public class Direccion {
+import java.io.Serializable;
+
+public class Direccion  implements Serializable {
 
         private String state_id;
         private String state_name;
