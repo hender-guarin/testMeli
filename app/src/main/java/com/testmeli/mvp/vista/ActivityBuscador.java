@@ -1,4 +1,4 @@
-package com.testmeli.MVP.vista;
+package com.testmeli.mvp.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,10 +11,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.testmeli.MVP.modelo.Clases.Producto;
-import com.testmeli.MVP.presentador.PresentadorProducto;
-import com.testmeli.MVP.presentador.PresentadorProductoImpl;
-import com.testmeli.MVP.vista.adaptadores.ProductoAdapter;
+import com.testmeli.mvp.modelo.Clases.Producto;
+import com.testmeli.mvp.presentador.PresentadorProducto;
+import com.testmeli.mvp.presentador.PresentadorProductoImpl;
+import com.testmeli.mvp.vista.adaptadores.ProductoAdapter;
 import com.testmeli.R;
 import com.testmeli.util.Util;
 

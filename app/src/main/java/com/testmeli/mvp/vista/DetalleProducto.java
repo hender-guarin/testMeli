@@ -1,4 +1,4 @@
-package com.testmeli.MVP.vista;
+package com.testmeli.mvp.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
@@ -15,8 +15,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.testmeli.MVP.modelo.Clases.Atributo;
-import com.testmeli.MVP.modelo.Clases.Producto;
+import com.testmeli.mvp.modelo.Clases.Atributo;
+import com.testmeli.mvp.modelo.Clases.Producto;
 import com.testmeli.R;
 import com.testmeli.util.Util;
 

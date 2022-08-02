@@ -1,6 +1,6 @@
-package com.testmeli.MVP.vista;
+package com.testmeli.mvp.vista;
 
-import com.testmeli.MVP.modelo.Clases.Producto;
+import com.testmeli.mvp.modelo.Clases.Producto;
 
 import java.util.List;
 

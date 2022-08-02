@@ -1,4 +1,4 @@
-package com.testmeli.MVP.vista;
+package com.testmeli.mvp.vista;
 
 public interface VistaGeneral {
 

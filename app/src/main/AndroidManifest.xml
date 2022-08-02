@@ -18,11 +18,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".MVP.vista.DetalleProducto"
+            android:name=".mvp.vista.DetalleProducto"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
-            android:name=".MVP.vista.ActivityBuscador"
+            android:name=".mvp.vista.ActivityBuscador"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:windowSoftInputMode="stateHidden">

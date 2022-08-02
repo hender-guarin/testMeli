@@ -1,4 +1,4 @@
-package com.testmeli.MVP.vista.adaptadores;
+package com.testmeli.mvp.vista.adaptadores;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +13,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.testmeli.MVP.vista.ProductoSeleccionado;
-import com.testmeli.MVP.modelo.Clases.Producto;
+import com.testmeli.mvp.vista.ProductoSeleccionado;
+import com.testmeli.mvp.modelo.Clases.Producto;
 import com.testmeli.R;
 import com.testmeli.util.Util;
 

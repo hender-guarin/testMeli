@@ -1,4 +1,4 @@
-package com.testmeli.MVP.modelo.Repository;
+package com.testmeli.mvp.modelo.Repository;
 
 
 public interface RepositoryProducto extends RepositoryGeneral {
