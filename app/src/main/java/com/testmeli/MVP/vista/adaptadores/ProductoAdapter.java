@@ -16,6 +16,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.testmeli.MVP.vista.ProductoSeleccionado;
 import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.R;
+import com.testmeli.util.Util;
+
 import java.util.List;
 
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ProductoHolder> {
@@ -47,7 +49,26 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         }
 
         if(producto.getPrecio()!=null && !producto.getPrecio().isEmpty()){
-            holder.tvPrecio.setText(producto.getPrecio());
+
+            String [] precioTotal= producto.getPrecio().split("\\.");
+            String resultado="";
+            if(precioTotal.length==2){
+                String entero= precioTotal[0];
+                String decimal= precioTotal[1];
+                int size= decimal.length();
+
+                if(size==1){
+                    decimal= precioTotal[1]+"0";
+                }
+
+                resultado= "$ "+ Util.formatoMiles(entero)+","+decimal;
+
+            }else{
+                resultado= "$ "+Util.formatoMiles(precioTotal[0])+",00";
+            }
+
+            holder.tvPrecio.setText(resultado);
+
         }
 
         if(producto.getUnidadesDisponible()!=null && !producto.getUnidadesDisponible().isEmpty()){

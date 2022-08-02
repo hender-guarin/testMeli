@@ -106,6 +106,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
     public void getProductos(String info) {
         showDialogCargando(R.string.informacion, R.string.consultando_productos);
         String data= remplazarCaracteresEspeciales(info);
+        System.out.println("mil ---> "+Util.formatoMiles("10000000"));
        presentadorProducto.getProductos(data);
     }
 
@@ -137,7 +138,6 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         rta=rta.replace("í","i");
         rta=rta.replace("ó","o");
         rta=rta.replace("ú","u");
-
         return rta;
 
     }

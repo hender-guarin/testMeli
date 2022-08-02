@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.testmeli.MVP.modelo.Clases.Atributo;
 import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.R;
+import com.testmeli.util.Util;
 
 import java.util.List;
 
@@ -65,9 +66,26 @@ public class DetalleProducto extends AppCompatActivity {
                 imgProducto.setVisibility(View.GONE);
             }
 
-
             if(producto.getPrecio()!=null && !producto.getPrecio().isEmpty()){
-              tvPrecio.setText(producto.getPrecio());
+              String [] precioTotal= producto.getPrecio().split("\\.");
+                String resultado="";
+              if(precioTotal.length==2){
+                  String entero= precioTotal[0];
+                  String decimal= precioTotal[1];
+                  int size= decimal.length();
+
+                  if(size==1){
+                      decimal= precioTotal[1]+"0";
+                  }
+
+                  resultado= "$ "+Util.formatoMiles(entero)+","+decimal;
+
+              }else{
+                  resultado= "$ "+Util.formatoMiles(precioTotal[0])+",00";
+              }
+
+              tvPrecio.setText(resultado);
+
           }else {
               tvPrecio.setText(View.GONE);
           }
