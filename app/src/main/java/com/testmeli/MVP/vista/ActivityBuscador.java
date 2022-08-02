@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -98,7 +99,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
             recyclerView.setAdapter(null);
         }else {
 
-            ProductoAdapter productoAdapter = new ProductoAdapter(productos,getApplicationContext());
+            ProductoAdapter productoAdapter = new ProductoAdapter(productos,getApplicationContext(),interfaceProducto());
             recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
             recyclerView.setAdapter(productoAdapter);
             recyclerView.setHasFixedSize(true);
@@ -111,6 +112,14 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         showDialogCargando(R.string.informacion, R.string.consultando_productos);
         String data= info.replace(" ","%20");
        presentadorProducto.getProductos(data);
+    }
+
+    public ProductoSeleccionado interfaceProducto(){
+        return producto -> {
+            Intent intent = new Intent(getApplicationContext(), DetalleProducto.class);
+            intent.putExtra("producto", producto);
+            startActivity(intent);
+        };
     }
 
    }

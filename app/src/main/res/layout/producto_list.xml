@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:elevation="15dp"
         app:cardCornerRadius="10dp"
+        android:id="@+id/cardDetalle"
         >
 
         <LinearLayout

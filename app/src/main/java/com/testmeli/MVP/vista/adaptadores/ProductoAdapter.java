@@ -7,12 +7,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.testmeli.MVP.vista.ProductoSeleccionado;
 import com.testmeli.MVP.modelo.Clases.Atributo;
 import com.testmeli.MVP.modelo.Clases.Producto;
 import com.testmeli.R;
@@ -22,6 +24,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     List<Producto> productos;
     Context context;
+    ProductoSeleccionado productoSel;
 
     @NonNull
     @Override
@@ -30,9 +33,10 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
     }
 
-    public ProductoAdapter(List<Producto> productos,Context ctx) {
+    public ProductoAdapter(List<Producto> productos, Context ctx, ProductoSeleccionado productoSeleccionado) {
         this.productos = productos;
         this.context=ctx;
+        productoSel= productoSeleccionado;
     }
 
     @Override
@@ -111,6 +115,13 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
            holder.ly_mas.setVisibility(View.VISIBLE);
        });
 
+       holder.cardDetalle.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               productoSel.getProducto(producto);
+           }
+       });
+
        if(producto.getUrlImagen()!=null && !producto.getUrlImagen().isEmpty()){
         RequestOptions options = new RequestOptions()
         .centerCrop()
@@ -149,6 +160,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         private final TextView tvCiudad;
         private final ImageView imgVerMenos;
         private final ImageView imgProducto;
+        private final CardView cardDetalle;
 
 
         public ProductoHolder(View itemView) {
@@ -164,6 +176,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
             tvCiudad=itemView.findViewById(R.id.tv_ubicacion);
             imgVerMenos= itemView.findViewById(R.id.img_ver_menos);
             imgProducto= itemView.findViewById(R.id.img_producto);
+            cardDetalle=itemView.findViewById(R.id.cardDetalle);
 
         }
 

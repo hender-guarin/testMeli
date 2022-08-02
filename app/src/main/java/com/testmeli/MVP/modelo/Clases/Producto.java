@@ -1,8 +1,9 @@
 package com.testmeli.MVP.modelo.Clases;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Producto {
+public class Producto  implements Serializable {
 
     private String titulo;
     private String precio;
