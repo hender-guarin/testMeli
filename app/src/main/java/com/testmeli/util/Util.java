@@ -19,9 +19,9 @@ public class Util {
     }
 
     public static String formatoMiles(String cadena) {
-        int i=0;
+        int i;
         int k = 0;
-        int j = 0;
+        int j;
         int tam;
 
         tam = cadena.length();
