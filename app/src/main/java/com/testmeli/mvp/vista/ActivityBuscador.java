@@ -71,8 +71,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         Toast.makeText(getApplicationContext(), getString(titulo) + " : " + mensaje, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void showDialogCargando(int titulo, int mensaje) {
+    private void showDialogCargando(int titulo, int mensaje) {
         progressDialog.setTitle(getString(titulo));
         progressDialog.setMessage(getString(mensaje));
         progressDialog.show();
@@ -102,8 +101,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
 
     }
 
-    @Override
-    public void getProductos(String info) {
+    private void getProductos(String info) {
         showDialogCargando(R.string.informacion, R.string.consultando_productos);
         String data= remplazarCaracteresEspeciales(info);
        presentadorProducto.getProductos(data);

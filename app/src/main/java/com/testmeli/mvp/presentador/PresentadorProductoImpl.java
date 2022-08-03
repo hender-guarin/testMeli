@@ -5,20 +5,16 @@ import android.content.Context;
 import com.testmeli.mvp.modelo.clases.Producto;
 import com.testmeli.mvp.modelo.repository.RepositoryProductoWeb;
 import com.testmeli.mvp.vista.VistaProducto;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class PresentadorProductoImpl implements PresentadorProducto {
 
     final VistaProducto vistaProducto;
     final RepositoryProductoWeb repositoryProductoWeb;
-    final List<Producto> productos2;
 
     public PresentadorProductoImpl(VistaProducto vistaProducto, Context context) {
         this.vistaProducto = vistaProducto;
         repositoryProductoWeb = new RepositoryProductoWeb(context,this);
-        productos2= new ArrayList<>();
     }
 
 

@@ -6,7 +6,5 @@ public interface VistaGeneral {
 
     void showAlertDialogInf(int titulo, String mensaje);
 
-    void showDialogCargando(int titulo, int mensaje);
-
     void cancelDialogCargando();
 }

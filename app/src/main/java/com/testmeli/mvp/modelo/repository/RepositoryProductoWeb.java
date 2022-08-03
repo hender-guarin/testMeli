@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RepositoryProductoWeb implements  RepositoryProducto{
+public class RepositoryProductoWeb {
 
     final Context context;
     final PresentadorProducto presentadorProducto;
@@ -33,7 +33,6 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
         this.presentadorProducto = presentadorProducto;
     }
 
-    @Override
     public void getProductos(String info) {
 
         List<Producto> productos=new ArrayList<>();
@@ -102,8 +101,7 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
 
     }
 
-    @Override
-    public boolean verificarConexion() {
+    private boolean verificarConexion() {
      ConnectivityManager con = (ConnectivityManager) context.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
      NetworkInfo networkInfo = con.getActiveNetworkInfo();
      return networkInfo != null && networkInfo.isConnected();
