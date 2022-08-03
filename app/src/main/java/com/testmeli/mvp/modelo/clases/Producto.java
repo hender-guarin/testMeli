@@ -1,4 +1,4 @@
-package com.testmeli.MVP.modelo.Clases;
+package com.testmeli.mvp.modelo.clases;
 
 import java.io.Serializable;
 import java.util.List;

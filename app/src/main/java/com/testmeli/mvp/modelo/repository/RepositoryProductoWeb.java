@@ -1,4 +1,4 @@
-package com.testmeli.MVP.modelo.Repository;
+package com.testmeli.mvp.modelo.repository;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -8,13 +8,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.testmeli.Endpoint.Endpoint;
-import com.testmeli.MVP.modelo.Clases.Atributo;
-import com.testmeli.MVP.modelo.Clases.Direccion;
-import com.testmeli.MVP.modelo.Clases.Producto;
-import com.testmeli.MVP.presentador.PresentadorProducto;
+import com.testmeli.endpoint.Endpoint;
+import com.testmeli.mvp.modelo.clases.Atributo;
+import com.testmeli.mvp.modelo.clases.Direccion;
+import com.testmeli.mvp.modelo.clases.Producto;
+import com.testmeli.mvp.presentador.PresentadorProducto;
 import com.testmeli.R;
 
 import org.json.JSONArray;
@@ -49,7 +47,6 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
         JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.GET,url,null, response -> {
 
 
-            Gson gson = new GsonBuilder().create();
 
             try {
                 JSONArray obj= response.getJSONArray("results");
@@ -61,7 +58,10 @@ public class RepositoryProductoWeb implements  RepositoryProducto{
                     int cantidadDisp= json.getInt("available_quantity");
                     int cantidadesVendidas=json.getInt("sold_quantity");
                     String urlImagen= json.getString("thumbnail");
-                    Direccion direccion = gson.fromJson(json.getString("address"), Direccion.class);
+                    JSONObject jsonObject=json.getJSONObject("address");
+                    String estado= jsonObject.getString("state_name");
+                    String ciudad=jsonObject.getString("city_name");
+                    Direccion direccion = new Direccion(estado,ciudad);
 
                     JSONArray jsonArray= json.getJSONArray("attributes");
                     List<Atributo> atributos = new ArrayList<>();

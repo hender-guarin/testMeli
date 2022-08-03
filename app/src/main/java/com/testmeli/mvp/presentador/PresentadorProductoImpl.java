@@ -1,10 +1,10 @@
-package com.testmeli.MVP.presentador;
+package com.testmeli.mvp.presentador;
 
 import android.content.Context;
 
-import com.testmeli.MVP.modelo.Clases.Producto;
-import com.testmeli.MVP.modelo.Repository.RepositoryProductoWeb;
-import com.testmeli.MVP.vista.VistaProducto;
+import com.testmeli.mvp.modelo.clases.Producto;
+import com.testmeli.mvp.modelo.repository.RepositoryProductoWeb;
+import com.testmeli.mvp.vista.VistaProducto;
 
 import java.util.ArrayList;
 import java.util.List;
