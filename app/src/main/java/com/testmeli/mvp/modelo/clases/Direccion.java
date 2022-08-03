@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class Direccion  implements Serializable {
 
-    private final String state_name;
-    private final String city_name;
+    private final String estado;
+    private final String ciudad;
 
-    public Direccion(String state_name, String city_name) {
-        this.state_name = state_name;
-        this.city_name = city_name;
+    public Direccion(String estado, String ciudad) {
+        this.estado = estado;
+        this.ciudad = ciudad;
     }
 
-    public String getState_name() {
-        return state_name;
+    public String getEstado() {
+        return estado;
     }
 
-    public String getCity_name() {
-        return city_name;
+    public String getCiudad() {
+        return ciudad;
     }
 
 }

@@ -1,5 +1,8 @@
 package com.testmeli.mvp.vista;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -44,77 +47,32 @@ public class DetalleProducto extends AppCompatActivity {
 
         if(producto !=null){
 
-          if(producto.getTitulo()!=null && !producto.getTitulo().isEmpty()){
+            if(producto.getTitulo()!=null){
              tvNombre.setText(producto.getTitulo());
-            }else {
-              tvNombre.setVisibility(View.GONE);
-           }
-
-            if(producto.getUrlImagen()!=null && !producto.getUrlImagen().isEmpty()){
-                RequestOptions options = new RequestOptions()
-                        .centerCrop()
-                        .placeholder(R.drawable.img_no_disponible)
-                        .error(R.drawable.img_no_disponible)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .priority(Priority.HIGH);
-
-                Glide.with(getApplicationContext())
-                        .load(producto.getUrlImagen())
-                        .apply(options)
-                        .into(imgProducto);
-            }else{
-                imgProducto.setVisibility(View.GONE);
             }
 
-            if(producto.getPrecio()!=null && !producto.getPrecio().isEmpty()){
-              String [] precioTotal= producto.getPrecio().split("\\.");
-                String resultado;
-              if(precioTotal.length==2){
-                  String entero= precioTotal[0];
-                  String decimal= precioTotal[1];
-                  int size= decimal.length();
+            mostrarImagen(producto.getUrlImagen(),imgProducto);
 
-                  if(size==1){
-                      decimal= precioTotal[1]+"0";
-                  }
+            if(producto.getPrecio()!=null){
+              tvPrecio.setText(getPrecioFormato(producto.getPrecio()));
+            }
 
-                  resultado= "$ "+Util.formatoMiles(entero)+","+decimal;
-
-              }else{
-                  resultado= "$ "+Util.formatoMiles(precioTotal[0])+",00";
-              }
-
-              tvPrecio.setText(resultado);
-
-          }else {
-              tvPrecio.setText(View.GONE);
-          }
-
-            if(producto.getUnidadesDisponible()!=null && !producto.getUnidadesDisponible().isEmpty()){
+            if(producto.getUnidadesDisponible()!=null ){
                 tvUnidadesDisp.setText(producto.getUnidadesDisponible());
-            }else {
-                tvUnidadesDisp.setText(View.GONE);
             }
 
-            if(producto.getUnidadesVendida()!=null && !producto.getUnidadesVendida().isEmpty()){
+            if(producto.getUnidadesVendida()!=null){
                 tvUnidadesven.setText(producto.getUnidadesVendida());
-            }else {
-                tvUnidadesven.setText(View.GONE);
             }
 
             if(producto.getAtributos()!=null && producto.getAtributos().size()>0){
             llenarPropiedades(producto.getAtributos());
-
-            }else {
-                lyDetalles.setVisibility(View.GONE);
             }
 
             if(producto.getDireccion()!=null){
-                String info = producto.getDireccion().getCity_name() + ", " + producto.getDireccion().getState_name();
+                String info = producto.getDireccion().getCiudad() + ", " + producto.getDireccion().getEstado();
                 tvUbicacion.setText(info);
-            }else  {
-                tvUbicacion.setVisibility(View.VISIBLE);
-              }
+            }
         }
     }
 
@@ -122,13 +80,13 @@ public class DetalleProducto extends AppCompatActivity {
     public void llenarPropiedades(List<Atributo> atributos) {
 
          for(int i = 0; i< atributos.size(); i++){
-           LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+           LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
 
            LinearLayout linearLy= new LinearLayout(this);
            linearLy.setOrientation(LinearLayout.VERTICAL);
            linearLy.setLayoutParams(params);
 
-           LinearLayout.LayoutParams para = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+           LinearLayout.LayoutParams para = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
            para.setMargins(0,10,0,0);
            LinearLayout linearLayout= new LinearLayout(this);
            linearLayout.setWeightSum(5);
@@ -136,7 +94,7 @@ public class DetalleProducto extends AppCompatActivity {
            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
            linearLayout.setLayoutParams(para);
 
-           LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.WRAP_CONTENT,3);
+           LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(0, WRAP_CONTENT,3);
 
            TextView tv1 = new TextView(this);
            tv1.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
@@ -145,7 +103,7 @@ public class DetalleProducto extends AppCompatActivity {
            tv1.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
            tv1.setTextColor(Color.parseColor("#333333"));
 
-           LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.WRAP_CONTENT,2);
+           LinearLayout.LayoutParams param2 = new LinearLayout.LayoutParams(0, WRAP_CONTENT,2);
 
            TextView tv2 = new TextView(this);
            tv2.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
@@ -155,7 +113,7 @@ public class DetalleProducto extends AppCompatActivity {
            tv2.setText(atributos.get(i).getValor());
            tv2.setLayoutParams(param2);
 
-           LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+           LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
 
            TextView tv3 = new TextView(this);
            tv3.setLayoutParams(param3);
@@ -169,6 +127,46 @@ public class DetalleProducto extends AppCompatActivity {
 
            lyDetalles.addView(linearLy);
         }
+
+    }
+
+    private void mostrarImagen(String url,ImageView img){
+
+        if(url!=null){
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
+                    .placeholder(R.drawable.img_no_disponible)
+                    .error(R.drawable.img_no_disponible)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .priority(Priority.HIGH);
+
+            Glide.with(getApplicationContext())
+                    .load(url)
+                    .apply(options)
+                    .into(img);
+        }
+    }
+
+    public String getPrecioFormato(String precio){
+
+        String [] precioTotal= precio.split("\\.");
+        String resultado;
+        if(precioTotal.length==2){
+            String entero= precioTotal[0];
+            String decimal= precioTotal[1];
+            int size= decimal.length();
+
+            if(size==1){
+                decimal= precioTotal[1]+"0";
+            }
+
+            resultado= "$ "+Util.formatoMiles(entero)+","+decimal;
+
+        }else{
+            resultado= "$ "+Util.formatoMiles(precioTotal[0])+",00";
+        }
+
+        return resultado;
 
     }
 
