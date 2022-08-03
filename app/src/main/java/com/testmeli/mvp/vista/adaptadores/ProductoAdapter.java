@@ -14,7 +14,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.testmeli.mvp.vista.ProductoSeleccionado;
-import com.testmeli.mvp.modelo.Clases.Producto;
+import com.testmeli.mvp.modelo.clases.Producto;
 import com.testmeli.R;
 import com.testmeli.util.Util;
 

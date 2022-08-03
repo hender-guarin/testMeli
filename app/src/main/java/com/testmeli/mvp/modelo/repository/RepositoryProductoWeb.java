@@ -1,4 +1,4 @@
-package com.testmeli.mvp.modelo.Repository;
+package com.testmeli.mvp.modelo.repository;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -11,9 +11,9 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.testmeli.endpoint.Endpoint;
-import com.testmeli.mvp.modelo.Clases.Atributo;
-import com.testmeli.mvp.modelo.Clases.Direccion;
-import com.testmeli.mvp.modelo.Clases.Producto;
+import com.testmeli.mvp.modelo.clases.Atributo;
+import com.testmeli.mvp.modelo.clases.Direccion;
+import com.testmeli.mvp.modelo.clases.Producto;
 import com.testmeli.mvp.presentador.PresentadorProducto;
 import com.testmeli.R;
 

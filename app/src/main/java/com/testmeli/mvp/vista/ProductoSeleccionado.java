@@ -1,6 +1,6 @@
 package com.testmeli.mvp.vista;
 
-import com.testmeli.mvp.modelo.Clases.Producto;
+import com.testmeli.mvp.modelo.clases.Producto;
 
 public interface ProductoSeleccionado {
 

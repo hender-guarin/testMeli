@@ -1,6 +1,6 @@
 package com.testmeli.mvp.presentador;
 
-import com.testmeli.mvp.modelo.Clases.Producto;
+import com.testmeli.mvp.modelo.clases.Producto;
 
 import java.util.List;
 

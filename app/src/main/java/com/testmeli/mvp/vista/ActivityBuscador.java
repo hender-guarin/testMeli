@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.testmeli.mvp.modelo.Clases.Producto;
+import com.testmeli.mvp.modelo.clases.Producto;
 import com.testmeli.mvp.presentador.PresentadorProducto;
 import com.testmeli.mvp.presentador.PresentadorProductoImpl;
 import com.testmeli.mvp.vista.adaptadores.ProductoAdapter;
@@ -39,15 +39,15 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         presentadorProducto= new PresentadorProductoImpl(this,getApplicationContext());
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        EditText ed_info= findViewById(R.id.ed_informacion);
+        EditText edInfo= findViewById(R.id.ed_informacion);
         ImageView imgBuscar= findViewById(R.id.btn_buscar);
         recyclerView= findViewById(R.id.rv_result);
 
-        Util.ocultarTeclado(getApplicationContext(),ed_info);
+        Util.ocultarTeclado(getApplicationContext(),edInfo);
 
         imgBuscar.setOnClickListener(view -> {
-            Util.ocultarTeclado(getApplicationContext(),ed_info);
-            String info= ed_info.getText().toString();
+            Util.ocultarTeclado(getApplicationContext(),edInfo);
+            String info= edInfo.getText().toString();
 
             if(info.isEmpty()){
                 showAlertDialogInf(R.string.informacion,"Ingrese la palabra a buscar");
@@ -106,7 +106,6 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
     public void getProductos(String info) {
         showDialogCargando(R.string.informacion, R.string.consultando_productos);
         String data= remplazarCaracteresEspeciales(info);
-        System.out.println("mil ---> "+Util.formatoMiles("10000000"));
        presentadorProducto.getProductos(data);
     }
 
