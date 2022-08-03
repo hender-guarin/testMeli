@@ -25,8 +25,8 @@ import java.util.Map;
 
 public class RepositoryProductoWeb implements  RepositoryProducto{
 
-    Context context;
-    PresentadorProducto presentadorProducto;
+    final Context context;
+    final PresentadorProducto presentadorProducto;
 
     public RepositoryProductoWeb(Context context, PresentadorProducto presentadorProducto) {
         this.context = context;

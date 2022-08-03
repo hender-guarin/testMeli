@@ -22,9 +22,9 @@ import java.util.List;
 
 public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ProductoHolder> {
 
-    List<Producto> productos;
-    Context context;
-    ProductoSeleccionado productoSel;
+    final List<Producto> productos;
+    final Context context;
+    final ProductoSeleccionado productoSel;
 
     @NonNull
     @Override

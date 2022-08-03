@@ -11,9 +11,9 @@ import java.util.List;
 
 public class PresentadorProductoImpl implements PresentadorProducto {
 
-    VistaProducto vistaProducto;
-    RepositoryProductoWeb repositoryProductoWeb;
-    List<Producto> productos2;
+    final VistaProducto vistaProducto;
+    final RepositoryProductoWeb repositoryProductoWeb;
+    final List<Producto> productos2;
 
     public PresentadorProductoImpl(VistaProducto vistaProducto, Context context) {
         this.vistaProducto = vistaProducto;
