@@ -1,16 +1,25 @@
 package com.testmeli.mvp.modelo.clases;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class Producto  implements Serializable {
 
+    @SerializedName(value = "title")
     private final String titulo;
+    @SerializedName(value = "price")
     private final String precio;
+    @SerializedName(value = "available_quantity")
     private final String unidadesDisponible;
+    @SerializedName(value = "sold_quantity")
     private final String unidadesVendida;
+    @SerializedName(value = "thumbnail")
     private final String urlImagen;
+    @SerializedName(value = "address")
     private final Direccion direccion;
+    @SerializedName(value = "attributes")
     private final List<Atributo> atributos;
 
 
