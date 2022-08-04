@@ -63,16 +63,14 @@ public class Util {
     }
 
     public static Producto convertiJson(String datos){
+        System.out.println("datos  "+datos);
         Gson gson = new GsonBuilder().create();
-        Producto producto = null;
         try{
-            producto  = gson.fromJson(datos,Producto.class);
+            return gson.fromJson(datos,Producto.class);
         }catch (Exception e){
             e.printStackTrace();
+            return null;
         }
-
-        return producto;
-
     }
 
     public static boolean verificarConexion(Context context) {
@@ -80,6 +78,30 @@ public class Util {
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = con.getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
+    }
+
+    public static String remplazarCaracteresEspeciales(String info){
+
+        String rta=info;
+        rta=rta.replace(" ","%20");
+        rta=rta.replace("?","%20");
+        rta=rta.replace("¿","%20");
+        rta=rta.replace("¡","%20");
+        rta=rta.replace("!","%20");
+        rta=rta.replace("ñ","n");
+        rta=rta.replace("Ñ","N");
+        rta=rta.replace("Á","A");
+        rta=rta.replace("É","E");
+        rta=rta.replace("Í","I");
+        rta=rta.replace("Ó","O");
+        rta=rta.replace("Ú","U");
+        rta=rta.replace("á","a");
+        rta=rta.replace("é","e");
+        rta=rta.replace("í","i");
+        rta=rta.replace("ó","o");
+        rta=rta.replace("ú","u");
+        return rta;
+
     }
 
 
