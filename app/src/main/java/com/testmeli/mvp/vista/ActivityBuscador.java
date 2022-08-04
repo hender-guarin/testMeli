@@ -1,5 +1,7 @@
 package com.testmeli.mvp.vista;
 
+import static com.testmeli.util.Util.remplazarCaracteresEspeciales;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -71,8 +73,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         Toast.makeText(getApplicationContext(), getString(titulo) + " : " + mensaje, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void showDialogCargando(int titulo, int mensaje) {
+    private void showDialogCargando(int titulo, int mensaje) {
         progressDialog.setTitle(getString(titulo));
         progressDialog.setMessage(getString(mensaje));
         progressDialog.show();
@@ -102,8 +103,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
 
     }
 
-    @Override
-    public void getProductos(String info) {
+    private void getProductos(String info) {
         showDialogCargando(R.string.informacion, R.string.consultando_productos);
         String data= remplazarCaracteresEspeciales(info);
        presentadorProducto.getProductos(data);
@@ -117,28 +117,5 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         };
     }
 
-    public String remplazarCaracteresEspeciales(String info){
-
-        String rta=info;
-        rta=rta.replace(" ","%20");
-        rta=rta.replace("?","%20");
-        rta=rta.replace("¿","%20");
-        rta=rta.replace("¡","%20");
-        rta=rta.replace("!","%20");
-        rta=rta.replace("ñ","n");
-        rta=rta.replace("Ñ","N");
-        rta=rta.replace("Á","A");
-        rta=rta.replace("É","E");
-        rta=rta.replace("Í","I");
-        rta=rta.replace("Ó","O");
-        rta=rta.replace("Ú","U");
-        rta=rta.replace("á","a");
-        rta=rta.replace("é","e");
-        rta=rta.replace("í","i");
-        rta=rta.replace("ó","o");
-        rta=rta.replace("ú","u");
-        return rta;
-
-    }
 
    }
