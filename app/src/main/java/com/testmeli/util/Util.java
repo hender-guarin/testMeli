@@ -63,8 +63,7 @@ public class Util {
     }
 
     public static Producto convertiJson(String datos){
-        System.out.println("datos  "+datos);
-        Gson gson = new GsonBuilder().create();
+       Gson gson = new GsonBuilder().create();
         try{
             return gson.fromJson(datos,Producto.class);
         }catch (Exception e){
