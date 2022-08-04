@@ -1,4 +1,5 @@
 package com.testmeli.mvp.vista.adaptadores;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         productoSel= productoSeleccionado;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductoHolder holder, int position) {
 
@@ -49,26 +51,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
         }
 
         if(producto.getPrecio()!=null && !producto.getPrecio().isEmpty()){
-
-            String [] precioTotal= producto.getPrecio().split("\\.");
-            String resultado;
-            if(precioTotal.length==2){
-                String entero= precioTotal[0];
-                String decimal= precioTotal[1];
-                int size= decimal.length();
-
-                if(size==1){
-                    decimal= precioTotal[1]+"0";
-                }
-
-                resultado= "$ "+ Util.formatoMiles(entero)+","+decimal;
-
-            }else{
-                resultado= "$ "+Util.formatoMiles(precioTotal[0])+",00";
-            }
-
-            holder.tvPrecio.setText(resultado);
-
+            holder.tvPrecio.setText("$  "+Util.formatoMiles(producto.getPrecio()));
         }
 
         if(producto.getUnidadesDisponible()!=null && !producto.getUnidadesDisponible().isEmpty()){
@@ -79,16 +62,13 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
        holder.cardDetalle.setOnClickListener(view -> productoSel.getProducto(producto));
 
        if(producto.getUrlImagen()!=null && !producto.getUrlImagen().isEmpty()){
-        RequestOptions options = new RequestOptions()
-        .centerCrop()
-        .placeholder(R.drawable.img_no_disponible)
-        .error(R.drawable.img_no_disponible)
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
-        .priority(Priority.HIGH);
 
         Glide.with(context)
         .load(producto.getUrlImagen())
-        .apply(options)
+        .fitCenter()
+        .placeholder(R.drawable.img_no_disponible)
+        .error(R.drawable.img_no_disponible)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
         .into(holder.imgProducto);
 
        }
