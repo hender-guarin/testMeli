@@ -5,14 +5,13 @@ import static com.testmeli.util.Util.remplazarCaracteresEspeciales;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.testmeli.mvp.modelo.clases.Producto;
 import com.testmeli.mvp.presentador.PresentadorProducto;
 import com.testmeli.mvp.presentador.PresentadorProductoImpl;
@@ -27,6 +26,7 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
     private PresentadorProducto presentadorProducto;
     private RecyclerView recyclerView;
     private ProgressDialog progressDialog;
+    private EditText edInfo;
 
 
     @Override
@@ -41,24 +41,29 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         presentadorProducto= new PresentadorProductoImpl(this,getApplicationContext());
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
-        EditText edInfo= findViewById(R.id.ed_informacion);
+        edInfo= findViewById(R.id.ed_informacion);
         ImageView imgBuscar= findViewById(R.id.btn_buscar);
         recyclerView= findViewById(R.id.rv_result);
 
         Util.ocultarTeclado(getApplicationContext(),edInfo);
 
         imgBuscar.setOnClickListener(view -> {
-            Util.ocultarTeclado(getApplicationContext(),edInfo);
-            String info= edInfo.getText().toString();
+             Util.ocultarTeclado(getApplicationContext(),edInfo);
+              buscarInfo(edInfo.getText().toString());
 
-            if(info.isEmpty()){
-                showAlertDialogInf(R.string.informacion,"Ingrese la palabra a buscar");
-                recyclerView.setAdapter(null);
-            }else {
-                   getProductos(info);
-            }
+
         });
 
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_ENTER){
+            Util.ocultarTeclado(getApplicationContext(),edInfo);
+            buscarInfo(edInfo.getText().toString());
+            return true;
+        }
+        return super.onKeyUp(keyCode, event);
     }
 
     @Override
@@ -117,5 +122,12 @@ public class ActivityBuscador extends AppCompatActivity  implements  VistaProduc
         };
     }
 
-
+    public void buscarInfo(String info){
+        if(info.isEmpty()){
+            showAlertDialogInf(R.string.informacion,"Ingrese la palabra a buscar");
+            recyclerView.setAdapter(null);
+        }else {
+            getProductos(info);
+        }
+    }
    }
